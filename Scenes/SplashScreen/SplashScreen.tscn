@@ -1,0 +1,136 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/background.png" type="Texture" id=1]
+[ext_resource path="res://assets/logo.png" type="Texture" id=2]
+[ext_resource path="res://fonts/dynamicfont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/button.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/SplashScreen/SplashScreenButton.gd" type="Script" id=5]
+[ext_resource path="res://assets/github_PNG15.png" type="Texture" id=6]
+
+[node name="SplashScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 400.0
+margin_bottom = 400.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 80.8909
+margin_top = 37.255
+margin_right = 312.891
+margin_bottom = 101.255
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 120.0
+margin_right = 736.0
+margin_bottom = 193.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 3 )
+text = "Você é o comandante de uma raça alienígena que está invadindo a terra."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 160.0
+margin_right = 728.0
+margin_bottom = 233.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 3 )
+text = "Seu objetivo é derrotar a nave dos humanos antes que sua frota seja reduzida. Mas cuidado, os humanos contra-atacam!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 216.0
+margin_right = 728.0
+margin_bottom = 289.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 3 )
+text = "Controles:
+
+<- -> - movimentar 
+(mobile: deslize o dedo para os lados)
+
+S - Atirar 
+(mobile: deslize o dedo para baixo)"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Iniciar" type="TextureButton" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+expand = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="Iniciar"]
+margin_left = 128.0
+margin_top = 320.0
+margin_right = 254.0
+margin_bottom = 360.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Iniciar"]
+margin_left = 13.8982
+margin_top = 321.89
+margin_right = 725.898
+margin_bottom = 394.89
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 3 )
+text = "INICIAR"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GithubLink" type="TextureButton" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="GithubLink"]
+margin_left = 343.936
+margin_top = 377.361
+margin_right = 387.936
+margin_bottom = 390.361
+texture = ExtResource( 6 )
+expand = true
+[connection signal="pressed" from="Iniciar" to="Iniciar" method="_on_TextureButton_pressed"]
+[connection signal="gui_input" from="Iniciar/Label4" to="Iniciar/Label4" method="_on_Label4_gui_input"]
+[connection signal="pressed" from="GithubLink" to="Iniciar" method="_on_GithubLink_pressed"]

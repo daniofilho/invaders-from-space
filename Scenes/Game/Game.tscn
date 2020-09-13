@@ -1,0 +1,165 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/background.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/HumanShip/HumanShip.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Game/InGameGUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Background/main.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/MiniAliens/MiniAlienShip.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Game/Game.gd" type="Script" id=8]
+[ext_resource path="res://assets/music.wav" type="AudioStream" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 200 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="CollisionWalls" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CollisionWalls"]
+
+[node name="wall_left" type="CollisionShape2D" parent="CollisionWalls/StaticBody2D"]
+position = Vector2( -8, 200 )
+shape = SubResource( 1 )
+
+[node name="wall_right" type="CollisionShape2D" parent="CollisionWalls/StaticBody2D"]
+position = Vector2( 408, 200 )
+shape = SubResource( 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 6 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 400, 400 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+show_behind_parent = true
+scale = Vector2( 1.33333, 1.33333 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="MiniAliensShips" type="Node" parent="."]
+
+[node name="MiniAlienShip" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 32, 128 )
+
+[node name="MiniAlienShip2" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 96, 128 )
+
+[node name="MiniAlienShip3" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 160, 128 )
+
+[node name="MiniAlienShip4" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 224, 128 )
+
+[node name="MiniAlienShip5" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 288, 128 )
+
+[node name="MiniAlienShip6" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 352, 128 )
+
+[node name="MiniAlienShip7" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 32, 160 )
+
+[node name="MiniAlienShip8" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 96, 160 )
+
+[node name="MiniAlienShip9" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 160, 160 )
+
+[node name="MiniAlienShip10" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 224, 160 )
+
+[node name="MiniAlienShip11" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 288, 160 )
+
+[node name="MiniAlienShip12" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 352, 160 )
+
+[node name="MiniAlienShip13" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 32, 192 )
+
+[node name="MiniAlienShip14" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 96, 192 )
+
+[node name="MiniAlienShip15" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 160, 192 )
+
+[node name="MiniAlienShip16" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 224, 192 )
+
+[node name="MiniAlienShip17" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 288, 192 )
+
+[node name="MiniAlienShip18" parent="MiniAliensShips" groups=[
+"Mini Aliens",
+] instance=ExtResource( 7 )]
+position = Vector2( 352, 192 )
+
+[node name="HumanShip" parent="." instance=ExtResource( 4 )]
+position = Vector2( 9.57491, 376.157 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 192, 32 )
+
+[node name="GUI" parent="." instance=ExtResource( 5 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -21.668
+autoplay = true
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip" to="." method="_on_MiniAlienShip_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip2" to="." method="_on_MiniAlienShip2_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip3" to="." method="_on_MiniAlienShip3_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip4" to="." method="_on_MiniAlienShip4_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip5" to="." method="_on_MiniAlienShip5_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip6" to="." method="_on_MiniAlienShip6_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip7" to="." method="_on_MiniAlienShip7_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip8" to="." method="_on_MiniAlienShip8_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip9" to="." method="_on_MiniAlienShip9_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip10" to="." method="_on_MiniAlienShip10_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip11" to="." method="_on_MiniAlienShip11_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip12" to="." method="_on_MiniAlienShip12_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip13" to="." method="_on_MiniAlienShip13_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip14" to="." method="_on_MiniAlienShip14_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip15" to="." method="_on_MiniAlienShip15_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip16" to="." method="_on_MiniAlienShip16_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip17" to="." method="_on_MiniAlienShip17_ally_died"]
+[connection signal="ally_died" from="MiniAliensShips/MiniAlienShip18" to="." method="_on_MiniAlienShip18_ally_died"]
+[connection signal="human_died" from="HumanShip" to="." method="_on_HumanShip_human_died"]

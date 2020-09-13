@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://fonts/dynamicfont.tres" type="DynamicFont" id=1]
+
+[node name="GUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Aliados restantes" type="Label" parent="."]
+margin_left = 253.034
+margin_top = 7.38082
+margin_right = 557.034
+margin_bottom = 23.3808
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 1 )
+text = "Aliados restantes: "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ALIADOS_COUNT" type="Label" parent="."]
+margin_left = 369.25
+margin_top = 5.90924
+margin_right = 409.25
+margin_bottom = 21.9092
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 1 )
+text = "5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

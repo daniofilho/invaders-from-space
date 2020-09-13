@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/HumanShip/main.gd" type="Script" id=1]
+[ext_resource path="res://assets/human-ship.png" type="Texture" id=2]
+[ext_resource path="res://assets/human-bullet.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 14.625
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.317881, 0.642384, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 0.877003, 0.169536, 0.169536, 1, 0.86355, 0.188079, 0.188079, 1, 0.709804, 0.4, 0.4, 1 )
+
+[node name="HumanShip" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -0.125, 0.625 )
+shape = SubResource( 1 )
+
+[node name="human-ship" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="human-ship"]
+show_behind_parent = true
+position = Vector2( -0.210461, 10.6634 )
+amount = 200
+local_coords = false
+texture = ExtResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 0.527, 1 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+initial_velocity = 225.81
+angular_velocity = 720.0
+linear_accel = 27.96
+scale_amount = 0.5
+scale_amount_random = 1.0
+color_ramp = SubResource( 2 )
+hue_variation = 0.14
+hue_variation_random = 0.53
+anim_speed = 1.38
+anim_offset = 0.2
+
+[node name="BulletStart" type="Node2D" parent="."]
+position = Vector2( -0.375, -18.125 )
+rotation = 1.5708
+scale = Vector2( -126, 3.14286 )
